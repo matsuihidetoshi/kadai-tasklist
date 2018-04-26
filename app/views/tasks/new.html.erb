@@ -1,29 +1,32 @@
 <h1>タスク新規作成ページ</h1>
 
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
+    <% if @task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-        <% @task.errors.full_messages.each do |task| %>
-          <li><%= task %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% @task.errors.full_messages.each do |task| %>
+            <li><%= task %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= form_for(@task) do |f| %>
-  <div class="col-sm-offset-2 col-sm-4 col-lg-offset-3 col-lg-3" >
-    <%= f.label :content, 'タスク' %>
-    <%= f.text_field :content, class: 'form-control' %>
-  </div>
+    <%= form_for(@task) do |f| %>
+      <div class="form-group" >
+        <%= f.label :content, 'タスク' %>
+      <%= f.text_field :content, class: 'form-control' %>
+      </div>
   
-  <div class="col-sm-offset-2 col-sm-4 col-lg-offset-3 col-lg-3" >
-    <%= f.label :status, 'ステータス' %>
-    <%= f.text_field :status, class: 'form-control' %>
-  </div>
+      <div class="form-group" >
+        <%= f.label :status, 'ステータス' %>
+        <%= f.text_field :status, class: 'form-control' %>
+      </div>
   
-  <%= f.submit '作成' %>
-<% end %>
-
+      <%= f.submit '作成' %>
+    <% end %>
+  </div>
+</div>
 <% link_to '一覧に戻る', tasks_path %>
